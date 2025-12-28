@@ -1,11 +1,17 @@
-from pyrogram.types import InlineKeyboardButton
+# path: nexichat/idchatbot/helpers/inline.py
 
+from pyrogram.types import InlineKeyboardButton
 from config import SUPPORT_GRP, UPDATE_CHNL
-from nexichat import OWNER, nexichat
+from nexichat import OWNER
+
+BOT_USERNAME = "YourBotUsername"  # 👈 without @
+
+
+def add_to_group_url():
+    return f"https://t.me/{BOT_USERNAME}?startgroup=true"
 
 
 START_BOT = [
-    
     [
         InlineKeyboardButton(text="🛠️ σρεи ¢σммαиdꜱ ⚙️", callback_data="HELP"),
     ],
@@ -16,36 +22,29 @@ DEV_OP = [
     [
         InlineKeyboardButton(
             text="✦ ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ ✦",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=add_to_group_url(),
         ),
     ],
     [
         InlineKeyboardButton(text="« ʜᴇʟᴘ »", callback_data="HELP"),
     ],
     [
-        # InlineKeyboardButton(text="❄️ sᴏᴜʀᴄᴇ ❄️", callback_data="SOURCE"),
         InlineKeyboardButton(text="☁️ ᴀʙᴏᴜᴛ ☁️", callback_data="ABOUT"),
     ],
 ]
+
 
 PNG_BTN = [
     [
         InlineKeyboardButton(text="🛠️ σρεи ¢σммαиdꜱ ⚙️", callback_data="HELP"),
     ],
     [
-        InlineKeyboardButton(
-            text="⦿ ᴄʟᴏsᴇ ⦿",
-            callback_data="CLOSE",
-        ),
+        InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
     ],
 ]
 
 
-BACK = [
-    [
-        InlineKeyboardButton(text="⦿ ʙᴀᴄᴋ ⦿", callback_data="BACK"),
-    ],
-]
+BACK = [[InlineKeyboardButton(text="⦿ ʙᴀᴄᴋ ⦿", callback_data="BACK")]]
 
 
 HELP_BTN = [
@@ -53,17 +52,11 @@ HELP_BTN = [
         InlineKeyboardButton(text="🐳 ᴄʜᴀᴛʙᴏᴛ 🐳", callback_data="CHATBOT_CMD"),
         InlineKeyboardButton(text="🎄 ᴛᴏᴏʟs 🎄", callback_data="TOOLS_DATA"),
     ],
-    [
-        InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
-    ],
+    [InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE")],
 ]
 
 
-CLOSE_BTN = [
-    [
-        InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
-    ],
-]
+CLOSE_BTN = [[InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE")]]
 
 
 CHATBOT_ON = [
@@ -74,11 +67,8 @@ CHATBOT_ON = [
 ]
 
 
-MUSIC_BACK_BTN = [
-    [
-        InlineKeyboardButton(text="sᴏᴏɴ", callback_data=f"soom"),
-    ],
-]
+MUSIC_BACK_BTN = [[InlineKeyboardButton(text="sᴏᴏɴ", callback_data="soon")]]
+
 
 S_BACK = [
     [
@@ -121,7 +111,6 @@ ABOUT_BTN = [
     ],
     [
         InlineKeyboardButton(text="🍾 ᴏᴡɴᴇʀ 🍾", user_id=OWNER),
-        #   InlineKeyboardButton(text="❄️ sᴏᴜʀᴄᴇ ❄️", callback_data="SOURCE"),
     ],
     [
         InlineKeyboardButton(text="🐳 ᴜᴘᴅᴀᴛᴇs 🐳", url=f"https://t.me/{UPDATE_CHNL}"),
