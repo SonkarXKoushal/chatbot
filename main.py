@@ -1,5 +1,5 @@
-from nexichat import nexichat
+from nexichat.userbot.userbot import Userbot
 
 if __name__ == "__main__":
-    app = nexichat()
-    app.run()
+    userbot = Userbot()
+    userbot.run()
