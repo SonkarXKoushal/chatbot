@@ -1,14 +1,23 @@
-from pyrogram.types import InlineKeyboardButton
+# path: nexichat/inline.py
 
+from pyrogram.types import InlineKeyboardButton
 from config import SUPPORT_GRP, UPDATE_CHNL
-from nexichat import OWNER, nexichat
+from nexichat import OWNER
+
+# ⚠️ Bot username yahan SAFE tareeke se define karo
+# Isko config me bhi rakh sakte ho
+BOT_USERNAME = "YourBotUsername"  # 👈 yahan apna bot username daalo (without @)
+
+
+def add_to_group_url():
+    return f"https://t.me/{BOT_USERNAME}?startgroup=true"
 
 
 START_BOT = [
     [
         InlineKeyboardButton(
             text="😍 ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ 😍",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=add_to_group_url(),
         ),
     ],
     [
@@ -29,39 +38,32 @@ DEV_OP = [
     [
         InlineKeyboardButton(
             text="✦ ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ ✦",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=add_to_group_url(),
         ),
     ],
     [
         InlineKeyboardButton(text="« ʜᴇʟᴘ »", callback_data="HELP"),
     ],
     [
-        # InlineKeyboardButton(text="❄️ sᴏᴜʀᴄᴇ ❄️", callback_data="SOURCE"),
         InlineKeyboardButton(text="☁️ ᴀʙᴏᴜᴛ ☁️", callback_data="ABOUT"),
     ],
 ]
+
 
 PNG_BTN = [
     [
         InlineKeyboardButton(
             text="😍 ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ 😍",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=add_to_group_url(),
         ),
     ],
     [
-        InlineKeyboardButton(
-            text="⦿ ᴄʟᴏsᴇ ⦿",
-            callback_data="CLOSE",
-        ),
+        InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
     ],
 ]
 
 
-BACK = [
-    [
-        InlineKeyboardButton(text="⦿ ʙᴀᴄᴋ ⦿", callback_data="BACK"),
-    ],
-]
+BACK = [[InlineKeyboardButton(text="⦿ ʙᴀᴄᴋ ⦿", callback_data="BACK")]]
 
 
 HELP_BTN = [
@@ -69,17 +71,11 @@ HELP_BTN = [
         InlineKeyboardButton(text="🐳 ᴄʜᴀᴛʙᴏᴛ 🐳", callback_data="CHATBOT_CMD"),
         InlineKeyboardButton(text="🎄 ᴛᴏᴏʟs 🎄", callback_data="TOOLS_DATA"),
     ],
-    [
-        InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
-    ],
+    [InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE")],
 ]
 
 
-CLOSE_BTN = [
-    [
-        InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
-    ],
-]
+CLOSE_BTN = [[InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE")]]
 
 
 CHATBOT_ON = [
@@ -90,11 +86,8 @@ CHATBOT_ON = [
 ]
 
 
-MUSIC_BACK_BTN = [
-    [
-        InlineKeyboardButton(text="sᴏᴏɴ", callback_data=f"soom"),
-    ],
-]
+MUSIC_BACK_BTN = [[InlineKeyboardButton(text="sᴏᴏɴ", callback_data="soon")]]
+
 
 S_BACK = [
     [
@@ -123,7 +116,8 @@ HELP_START = [
 HELP_BUTN = [
     [
         InlineKeyboardButton(
-            text="« ʜᴇʟᴘ »", url=f"https://t.me/{nexichat.username}?start=help"
+            text="« ʜᴇʟᴘ »",
+            url=f"https://t.me/{BOT_USERNAME}?start=help",
         ),
         InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
     ],
@@ -137,7 +131,6 @@ ABOUT_BTN = [
     ],
     [
         InlineKeyboardButton(text="🍾 ᴏᴡɴᴇʀ 🍾", user_id=OWNER),
-        #   InlineKeyboardButton(text="❄️ sᴏᴜʀᴄᴇ ❄️", callback_data="SOURCE"),
     ],
     [
         InlineKeyboardButton(text="🐳 ᴜᴘᴅᴀᴛᴇs 🐳", url=f"https://t.me/{UPDATE_CHNL}"),
