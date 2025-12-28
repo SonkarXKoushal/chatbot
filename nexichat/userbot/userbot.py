@@ -1,14 +1,14 @@
-import asyncio
-from os import getenv
-from config import OWNER_ID
-from dotenv import load_dotenv
 from pyrogram import Client
 import config
+import asyncio
+import logging
+
+LOGGER = logging.getLogger(__name__)
 
 
-class Userbot(Client):
+class Userbot:
     def __init__(self):
-        self.one = Client(
+        self.app = Client(
             name="VIPAss1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
@@ -16,33 +16,22 @@ class Userbot(Client):
             no_updates=False,
             plugins=dict(root="nexichat.idchatbot"),
         )
-        
 
     async def start(self):
-        print(f"Starting Id chatbot...")
+        LOGGER.info("Starting Id chatbot...")
 
-        if config.STRING1:
-            await self.one.start()
-            try:
-                await self.one.join_chat("RIYA_network")
-                await self.one.join_chat("riya_CHAT_support")
-                await self.one.join_chat("SIGMA_BOT_NETWORK")
-                await self.one.join_chat("BIT_networks")
+        await self.app.start()
 
-            except:
-                pass
-            self.one.id = self.one.me.id
-            self.one.name = self.one.me.mention
-            self.one.username = self.one.me.username
-     
-            print(f"Id-Chatbot Started as {self.one.me.first_name}")
-            
-        
+        try:
+            await self.app.join_chat("RIYA_network")
+            await self.app.join_chat("riya_CHAT_support")
+            await self.app.join_chat("SIGMA_BOT_NETWORK")
+            await self.app.join_chat("BIT_networks")
+        except Exception:
+            pass
+
+        LOGGER.info(f"Id-Chatbot Started as {self.app.me.first_name}")
 
     async def stop(self):
-        LOGGER(__name__).info(f"Stopping Id-Chatbot...")
-        try:
-            if config.STRING1:
-                await self.one.stop()
-        except:
-            pass
+        LOGGER.info("Stopping Id-Chatbot...")
+        await self.app.stop()
