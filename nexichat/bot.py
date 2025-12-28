@@ -18,4 +18,3 @@ app = Client(
 def run():
     LOGGER.info("Starting Telegram Bot...")
     app.run()
-vv
